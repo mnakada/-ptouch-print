@@ -69,11 +69,11 @@ if(!params.svgData) {
   if(!params.insert.length) params.insert.push({});
   for(const idx in params.insert) {
     const options = Object.assign({}, params.options);
-    if(idx !== params.insert.length - 1) params.options.feedCut = false;
+    if(idx != params.insert.length - 1) options.feedCut = false;
     const status = await insertPrint(params.svgData, params.insert[idx], options).catch((e) => {
       return console.log(e);
     });
-    if(!params.options.preview) {
+    if(!params.options.preview && (idx == 0)) {
       console.log('機種　 : ', status.model);
       console.log('テープ : ', status.mediaWidth, status.tapeColor, status.media);
       console.log('文字色 : ', status.color);
