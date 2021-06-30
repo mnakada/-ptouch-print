@@ -21,21 +21,21 @@ Node.js Ver.14.0.0以降でお使いください。
          --rotate    : rotate image
 ```
 
-入力の<svg file>は必須です。
-<insert file>や<key>=<data>は差し込み印刷しない場合は不要です。
+入力の\<svg file\>は必須です。
+\<insert file\>や\<key\>=\<data\>は差し込み印刷しない場合は不要です。
 
 ### oprions
-  -preview
+ \-\-preview
     chrome browserで印刷のpreviewを表示します。
     複数の差し込み印刷データを入力されても最初の画面だけの表示になります。
 
-  -fine
+  \-\-fine
      印刷が遅くなる代わりに出力品質が良くなります。用途に応じて指定してください。
      
-  -cut
+  \-\-cut
      印刷後に排出します。連続で印刷する場合に指定しなければ、最後の印刷がプリンターから排出されません。プリンターのカットボタンで排出してください。
 
-  -rotate
+  \-\-rotate
       出力を90°回転して出力します。
       データの横幅がテープ幅になるようにスケールされます。
       指定しない場合はデータの縦幅がテープ幅になるようにスケールされます。
@@ -67,7 +67,7 @@ sample/sample.svgにテキスト差し込み用のid, nameのkeyとQR Code用の
 ### csvファイル
 １行目に各列のkey、２行目以降にデータを配置したcsvファイルを作成します。
 
-##### sample.csv
+#### sample.csv
 sample.svg用の差し込みデータのサンプルです。
 ```
 ./ptouch-print --preview sample/sample.svg sample/sample.csv
@@ -77,7 +77,7 @@ sample.svg用の差し込みデータのサンプルです。
 ### jsonファイル
 １件分のkeyとデータのペアのobjectを配列に入れたjsonファイルを作成します。
 
-##### sample.json
+#### sample.json
 sample.csvと同じデータのjson版です。
 ```
 ./ptouch-print --preview sample/sample.svg sample/sample.json
@@ -92,11 +92,13 @@ key=dataの形式で指定します。この場合は１件分のデータのみ
 chromeでpreviewが出ます。
 
 ## 印刷
+プリンターの電源を入れて、ネットワークに接続した状態でお使いください。
 差し込みデータを指定しない場合は、SVGのデータそのまま１枚だけの出力になります。
 差し込みデータを指定した場合は、データの数だけ差し込み印刷します。
 
 ## License
-MIT
+[MIT](https://github.com/mnakada/ptouch-print/blob/main/license)
+
 
 The word "QR Code" is registered trademark of:<br>
 DENSO WAVE INCORPORATED
