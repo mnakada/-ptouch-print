@@ -24,7 +24,7 @@ Node.js Ver.14.0.0以降でお使いください。
 入力の\<svg file\>は必須です。
 \<insert file\>や\<key\>=\<data\>は差し込み印刷しない場合は不要です。
 
-### oprions
+### options
  \-\-preview
     chrome browserで印刷のpreviewを表示します。
     複数の差し込み印刷データを入力されても最初の画面だけの表示になります。
