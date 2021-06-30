@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 5906 2953" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <path d="M881.236,949.039L881.236,467.609L2207.63,467.609L2207.63,1480.22L1680.37,1480.22C1682.57,1501.5 1683.7,1523.08 1683.7,1544.93C1683.7,1888.43 1404.82,2167.31 1061.32,2167.31C717.814,2167.31 438.933,1888.43 438.933,1544.93C438.933,1264.05 625.402,1026.37 881.236,949.039ZM1680.37,1480.22L881.236,1480.22L881.236,949.039C938.224,931.812 998.697,922.544 1061.32,922.544C1382.97,922.544 1647.97,1167.08 1680.37,1480.22Z"/>
+    <g transform="matrix(1,0,0,1,-1595.77,1031.99)">
+        <text x="3582.1px" y="866.677px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:416.667px;">ID:</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-1780.55,1159.76)">
+        <text x="4462.92px" y="730.7px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:416.667px;">$id</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-2290.55,1760.65)">
+        <text x="3582.1px" y="866.677px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:416.667px;">Name:</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-1754.61,1896.63)">
+        <text x="4462.92px" y="730.7px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:625px;">$name</text>
+    </g>
+    <g transform="matrix(1.07617,0,0,0.994565,-337.475,-216.703)">
+        <rect x="4323.18" y="288.111" width="1414.22" height="1414.22" style="fill:rgb(255,0,0);"/>
+    </g>
+</svg>

@@ -1,0 +1,83 @@
+#!/usr/local/bin/node
+//
+//  ptouch-print
+//
+//    usage : ptouch-print [options] <svg file> [<insert file(*.csv|*.json)>] [<key>=<data> ....]
+//    options:
+//        --preview   : no print, show preview chrome window
+//        --fine      : fine pitch print
+//        --cut       : feed cut enable
+//        --rotate    : rotate image
+//
+//  Copyright (C) 2021 Mitsuru Nakada
+//  This software is released under the MIT License, see license file.
+//
+
+const fs = require('fs');
+const insertPrint = require('./lib/InsertPrint');
+
+const params = process.argv.reduce((params, arg, idx) => {
+  if(idx < 2) return params;
+  if(arg === '--preview') {
+    params.options.preview = true;
+  } else if(arg === '--fine') {
+    params.options.fine = true;
+  } else if(arg === '--cut') {
+    params.options.feedCut = true;
+  } else if(arg === '--rotate') {
+    params.options.rotate = true;
+  } else if(arg.search(/\.svg$/) > 0) {
+    params.svgData = fs.readFileSync(arg, 'utf-8');
+  } else if(arg.search(/\.json$/) > 0) {
+    try {
+      const data = JSON.parse(fs.readFileSync(arg));
+      if(Array.isArray(data)) {
+        params.insert.push(...data);
+      } else {
+        params.insert.push(data);
+      }
+    } catch(e) {
+      console.error(e);
+    }
+  } else if(arg.search(/\.csv$/) > 0) {
+    const data = fs.readFileSync(arg, 'utf8');
+    const lines = data.split(/\n/);
+    const labels = lines[0].trim().split(/[,\t]/);
+    for(let i = 1; i < lines.length; i++) {
+      params.insert.push(lines[i].trim().split(/[,\t]/).reduce((ins, d, idx) => {
+        if(labels[idx].trim() !== '') ins[labels[idx].trim()] = d.trim();
+        return ins;
+      }, {}));
+    }
+  } else if(arg.search(/^\w+?=/) === 0) {
+    if(!params.insert.length) params.insert.push([]);
+    params.insert[0][arg.replace(/=.*$/, '')] = arg.replace(/^\w+?=/, '');
+  }
+  return params;
+}, { options:{}, insert: [] });
+if(!params.svgData) {
+  console.log('usage : ptouch-print [options] <svg file> [<insert file(*.csv|*.json)>] [<key>=<data> ....]');
+  console.log('  options:');
+  console.log('      --preview   : no print, show preview chrome window');
+  console.log('      --fine      : fine pitch print');
+  console.log('      --cut       : feed cut enable');
+  console.log('      --rotate    : rotate image');
+  return;
+}
+
+(async (params) => {
+  if(!params.insert.length) params.insert.push({});
+  for(const idx in params.insert) {
+    const options = Object.assign({}, params.options);
+    if(idx !== params.insert.length - 1) params.options.feedCut = false;
+    const status = await insertPrint(params.svgData, params.insert[idx], options).catch((e) => {
+      return console.log(e);
+    });
+    if(!params.options.preview) {
+      console.log('機種　 : ', status.model);
+      console.log('テープ : ', status.mediaWidth, status.tapeColor, status.media);
+      console.log('文字色 : ', status.color);
+    }
+    if(params.options.preview) break;
+  }
+})(params);

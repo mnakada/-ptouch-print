@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+# Xcode project files except for the project file
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+

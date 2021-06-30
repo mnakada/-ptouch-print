@@ -1,0 +1,21 @@
+{
+  "name": "ptouch-print",
+  "version": "1.0.0",
+  "description": "brother ptouch label printer insert print",
+  "main": "ptouch-print",
+  "bin": {
+    "ptouch-print": "./ptouch-print"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mitsuru Nakada",
+  "license": "MIT",
+  "dependencies": {
+    "mdns": "^2.7.2",
+    "net-snmp": "^3.5.2",
+    "pngjs": "^6.0.0",
+    "puppeteer": "^10.0.0",
+    "qrcode": "^1.4.4"
+  }
+}
